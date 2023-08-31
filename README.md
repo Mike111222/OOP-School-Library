@@ -2,7 +2,7 @@
 
 <a name="readme-top"></a>
 <div align="center">
-  <h3><b>OOP school library</b></h3>
+  <h3><b>OOP School Library</b></h3>
 </div>
 
 # 📗 Table of Contents
@@ -28,7 +28,7 @@
 
 # 📖 OOP school library <a name="about-project">OOP school library</a>
 
-**OOP school library** In this project, I created a form of UI for school library app. This way it can be invoked as an executable app and not something use in IRB exclusively.
+**OOP school library** In this project, I created a basic form of UI for the school library app. This way it can be invoked as an executable app and not something used in IRB exclusively.
 
 ## 🛠 Built With <a name="built-with"></a>
 Ruby
