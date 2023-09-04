@@ -1,6 +1,6 @@
 module Options
-  def select_option(user_choice)
-    options = {
+  def select_option(_user_choice)
+    {
       '1' => :list_all_books,
       '2' => :list_all_people,
       '3' => :create_person,
