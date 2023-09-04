@@ -1,12 +1,15 @@
 require_relative 'app'
+require_relative 'show_menu'
+require_relative 'option'
 
-class Options
+class Main
+  include Show
+  include Options
+
   def initialize
     @app = App.new(self)
-
     puts
     puts 'Welcome To The School Library App!'
-    show_menu
   end
 
   def show_menu
@@ -29,4 +32,5 @@ def main
   Options.new
 end
 
-main
+main = Main.new
+main.run_method
