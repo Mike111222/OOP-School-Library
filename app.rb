@@ -42,7 +42,6 @@ class App
     else
       puts 'Please add a valid input!'
     end
-    @parent.show_menu
   end
 
   def create_student
