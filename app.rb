@@ -26,10 +26,9 @@ class App
     else
       puts 'All people in the library'
       @people_list.each do |person|
-        puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts person
       end
     end
-    @parent.show_menu
   end
 
   def create_person
@@ -94,7 +93,6 @@ class App
     date = gets.chomp
     @rentals_list.push(Rental.new(date, @books_list[book_num], @people_list[person_num]))
     puts 'Rental created successfully'
-    @parent.show_menu
   end
 
   def list_all_rentals
@@ -103,9 +101,8 @@ class App
 
     puts 'Rentals:'
     @rentals_list.each do |rental|
-      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+      puts rental if rental.person.id == id
     end
-    @parent.show_menu
   end
 
   def exit
