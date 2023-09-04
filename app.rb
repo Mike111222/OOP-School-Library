@@ -16,9 +16,8 @@ class App
       puts 'No record found! Add some books...'
     else
       puts 'Available books in the library'
-      @books_list.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+      @books_list.each { |book| puts book }
     end
-    @parent.show_menu
   end
 
   def list_all_people
@@ -78,7 +77,6 @@ class App
     author = gets.chomp
     @books_list.push(Book.new(title, author))
     puts 'Book created successfully'
-    @parent.show_menu
   end
 
   def create_rental
@@ -112,5 +110,7 @@ class App
 
   def exit
     puts 'Thank you for using the app, see you later!'
+    puts
+    Kernel.exit
   end
 end
