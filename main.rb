@@ -21,28 +21,7 @@ class Options
     puts '7 -  Exit'
     puts
     user_choice = gets.chomp
-    select_option(user_choice)
-  end
-
-  def select_option(user_choice)
-    options = {
-      '1' => :list_all_books,
-      '2' => :list_all_people,
-      '3' => :create_person,
-      '4' => :create_book,
-      '5' => :create_rental,
-      '6' => :list_all_rentals,
-      '7' => :exit
-    }
-
-    method = options[user_choice]
-    if method.nil?
-      puts 'Invalid option, please try again!'
-      puts
-      show_menu
-    else
-      @app.send(method)
-    end
+    @app.select_option(user_choice)
   end
 end
 
