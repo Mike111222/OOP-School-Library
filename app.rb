@@ -67,7 +67,7 @@ class App
     exit
   end
 
-  def exit
-    puts 'Thank you for using the app, see you later!'
+  def show_menu
+    @options.show_menu
   end
 end
