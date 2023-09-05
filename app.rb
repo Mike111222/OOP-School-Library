@@ -3,13 +3,13 @@ require './teacher'
 require './book'
 require './rental'
 require_relative 'data_manager/save_data'
+require_relative 'data_manager/load_data'
 
 class App
-  def initialize(parent)
-    @parent = parent
-    @books_list = []
-    @people_list = []
-    @rentals_list = []
+  def initialize
+    @books_list = LoadData.load_data_from_json('data/books.json')
+    @people_list = LoadData.load_data_from_json('data/people.json')
+    @rentals_list = LoadData.load_data_from_json('data/rentals.json')
   end
 
   def list_all_books
