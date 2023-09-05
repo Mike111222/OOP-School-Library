@@ -7,7 +7,7 @@ class Main
   include Options
 
   def initialize
-    @app = App.new(self)
+    @app = App.new
     puts
     puts 'Welcome To The School Library App!'
   end
