@@ -2,6 +2,7 @@ require './student'
 require './teacher'
 require './book'
 require './rental'
+require_relative 'data_manager/save_data'
 
 class App
   def initialize(parent)
@@ -104,7 +105,16 @@ class App
     end
   end
 
+  def save_datas
+    puts 'Saving data to JSON files...'
+    SaveData.save_data_to_json('data/books.json', @books_list)
+    SaveData.save_data_to_json('data/people.json', @people_list)
+    SaveData.save_data_to_json('data/rentals.json', @rentals_list)
+    puts 'Data saved successfully!'
+  end
+
   def exit
+    save_datas
     puts 'Thank you for using the app, see you later!'
     puts
     Kernel.exit
