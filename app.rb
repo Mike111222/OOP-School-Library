@@ -16,9 +16,8 @@ class App
       puts 'No record found! Add some books...'
     else
       puts 'Available books in the library'
-      @books_list.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+      @books_list.each { |book| puts book }
     end
-    @parent.show_menu
   end
 
   def list_all_people
@@ -27,10 +26,9 @@ class App
     else
       puts 'All people in the library'
       @people_list.each do |person|
-        puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts person
       end
     end
-    @parent.show_menu
   end
 
   def create_person
@@ -44,7 +42,6 @@ class App
     else
       puts 'Please add a valid input!'
     end
-    @parent.show_menu
   end
 
   def create_student
@@ -78,7 +75,6 @@ class App
     author = gets.chomp
     @books_list.push(Book.new(title, author))
     puts 'Book created successfully'
-    @parent.show_menu
   end
 
   def create_rental
@@ -96,7 +92,6 @@ class App
     date = gets.chomp
     @rentals_list.push(Rental.new(date, @books_list[book_num], @people_list[person_num]))
     puts 'Rental created successfully'
-    @parent.show_menu
   end
 
   def list_all_rentals
@@ -105,12 +100,13 @@ class App
 
     puts 'Rentals:'
     @rentals_list.each do |rental|
-      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+      puts rental if rental.person.id == id
     end
-    @parent.show_menu
   end
 
   def exit
     puts 'Thank you for using the app, see you later!'
+    puts
+    Kernel.exit
   end
 end

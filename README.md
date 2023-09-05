@@ -80,7 +80,7 @@ bundle install
 To run the project, navigate to the project directory and execute the following command:
 
 ```sh
-  ruby test.rb
+  ruby main.rb
 ```
 
 ### Run tests
@@ -103,13 +103,19 @@ Not available at the moment.
 
 ## 👥 Authors <a name="authors"></a>
 
-
 👤 **Muhammad Amran Khan (Mike)**
 
 - GitHub: [@Mike111222](https://github.com/Mike111222)
 - Twitter: [@iMike111222](https://twitter.com/iMike111222)
 - LinkedIn: [@iMikeKhan](https://linkedin.com/in/iMikeKhan)
-  
+  <br>
+
+👤 **Anita Sharma**
+
+> - GitHub: [@anita00001](https://github.com/anita00001)
+> - LinkedIn: [anitaa-sharmaa](https://www.linkedin.com/in/anitaa-sharmaa/)
+> - Twitter: [@anitaa_sharmaa](https://twitter.com/anitaa_sharmaa)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
