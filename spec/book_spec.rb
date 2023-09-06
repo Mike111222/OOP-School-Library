@@ -24,7 +24,6 @@ describe Book do
     expect(book.rentals).to include(rental)
   end
 
-
   describe '#to_s' do
     it 'returns a string representation of the book' do
       expect(book.to_s).to eq('Title: Sample Book, Author: Sample Author')
