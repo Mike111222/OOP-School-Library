@@ -1,3 +1,4 @@
+require_relative 'rental'
 require 'json'
 
 class Book
@@ -11,7 +12,7 @@ class Book
   end
 
   def add_rental(date, person)
-    Rental.new(date, person, self)
+    Rental.new(date, self, person)
   end
 
   def to_s
