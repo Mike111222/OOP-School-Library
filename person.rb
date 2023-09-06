@@ -1,13 +1,11 @@
 require_relative 'nameable'
-require_relative 'rental'
 
 class Person < Nameable
-  attr_reader :id
-  attr_accessor :name, :age, :rentals
+  attr_accessor :id, :name, :age, :rentals
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  def initialize(name:, age:, id: nil, parent_permission: true)
     super()
-    @id = Random.rand(1..1000)
+    @id = id.nil? ? Random.rand(100..10_000) : id
     @name = name
     @age = age
     @parent_permission = parent_permission
@@ -22,14 +20,17 @@ class Person < Nameable
     @name
   end
 
+  def add_rental(date, book)
+    Rental.new(date, book, self)
+  end
+
+  def self.select(p_id, persons)
+    persons.select { |person| person.id == p_id }.first
+  end
+
   private
 
   def of_age
     @age.to_i >= 18
-  end
-
-  def add_rental(rental)
-    @rentals.push(rental)
-    rental.person = self
   end
 end

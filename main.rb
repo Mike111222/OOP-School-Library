@@ -1,13 +1,11 @@
 require_relative 'app'
 require_relative 'show_menu'
 require_relative 'option'
-
 class Main
   include Show
   include Options
-
   def initialize
-    @app = App.new(self)
+    @app = App.new
     puts
     puts 'Welcome To The School Library App!'
   end
@@ -17,7 +15,6 @@ class Main
       show_menu
       user_choice = gets.chomp
       select_option(user_choice)
-
       method = select_option(user_choice)[user_choice]
       if method.nil?
         puts 'Invalid option, please try again!'
@@ -25,10 +22,10 @@ class Main
         show_menu
       else
         @app.send(method)
+        @app.save
       end
     end
   end
 end
-
 main = Main.new
 main.run_method
