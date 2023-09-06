@@ -2,30 +2,32 @@ require './student'
 require './teacher'
 require './book'
 require './rental'
+require './file_handler'
 
 class App
-  def initialize(parent)
-    @parent = parent
-    @books_list = []
-    @people_list = []
-    @rentals_list = []
+  attr_accessor :books, :people, :rentals
+
+  def initialize
+    @books = []
+    @persons = []
+    @rentals = []
   end
 
   def list_all_books
-    if @books_list.empty?
+    if @books.empty?
       puts 'No record found! Add some books...'
     else
       puts 'Available books in the library'
-      @books_list.each { |book| puts book }
+      @books.each { |book| puts book }
     end
   end
 
   def list_all_people
-    if @people_list.empty?
+    if @persons.empty?
       puts 'No record found! Add a person...'
     else
       puts 'All people in the library'
-      @people_list.each do |person|
+      @persons.each do |person|
         puts person
       end
     end
@@ -46,12 +48,12 @@ class App
 
   def create_student
     print 'Age: '
-    age = gets.chomp.to_i
+    age = gets.chomp
     print 'Name: '
     name = gets.chomp
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.downcase == 'y'
-    @people_list.push(Student.new(age, name, parent_permission: parent_permission))
+    @persons.push(Student.new(age: age, name: name, parent_permission: parent_permission))
     puts
     puts 'Person created successfuly'
   end
@@ -63,7 +65,7 @@ class App
     name = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    @people_list.push(Teacher.new(age, specialization, name))
+    @persons.push(Teacher.new(age: age, specialization: specialization, name: name))
     puts
     puts 'Person created successfuly'
   end
@@ -73,24 +75,24 @@ class App
     title = gets.chomp
     print 'Author: '
     author = gets.chomp
-    @books_list.push(Book.new(title, author))
+    @books.push(Book.new(title: title, author: author))
     puts 'Book created successfully'
   end
 
   def create_rental
     puts 'Select a book from the following list by number'
-    @books_list.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
+    @books.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
     book_num = gets.chomp.to_i
     puts
     puts 'Select a person from the following list by number (not id)'
-    @people_list.each_with_index do |person, index|
+    @persons.each_with_index do |person, index|
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_num = gets.chomp.to_i
 
     print 'Date: '
     date = gets.chomp
-    @rentals_list.push(Rental.new(date, @books_list[book_num], @people_list[person_num]))
+    @rentals.push(Rental.new(date, @books[book_num], @persons[person_num]))
     puts 'Rental created successfully'
   end
 
@@ -99,7 +101,7 @@ class App
     id = gets.chomp.to_i
 
     puts 'Rentals:'
-    @rentals_list.each do |rental|
+    @rentals.each do |rental|
       puts rental if rental.person.id == id
     end
   end
