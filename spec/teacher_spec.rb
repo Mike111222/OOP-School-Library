@@ -31,12 +31,12 @@ describe Teacher do
   describe '#to_json' do
     it 'returns a JSON representation of the Teacher object' do
       json_data = JSON.dump({
-        type: 'Teacher',
-        id: 1,
-        name: 'John Doe',
-        age: 35,
-        specialization: 'Math'
-      })
+                              type: 'Teacher',
+                              id: 1,
+                              name: 'John Doe',
+                              age: 35,
+                              specialization: 'Math'
+                            })
       expect(teacher.to_json).to eq(json_data)
     end
   end
@@ -44,12 +44,12 @@ describe Teacher do
   describe '.from_json' do
     it 'creates a Teacher object from JSON data' do
       json_data = JSON.dump({
-        type: 'Teacher',
-        id: 1,
-        name: 'John Doe',
-        age: 35,
-        specialization: 'Math'
-      })
+                              type: 'Teacher',
+                              id: 1,
+                              name: 'John Doe',
+                              age: 35,
+                              specialization: 'Math'
+                            })
 
       new_teacher = Teacher.from_json(json_data)
 

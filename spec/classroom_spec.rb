@@ -6,8 +6,8 @@ require_relative '../student'
 describe Classroom do
   let(:classroom_label) { 'Math' }
   let(:classroom) { Classroom.new(classroom_label) }
-  
-  let(:student_data) { { id: 1, name: 'John Doe', age: 35,  parent_permission: true } }
+
+  let(:student_data) { { id: 1, name: 'John Doe', age: 35, parent_permission: true } }
   subject(:student) { described_class.new(**student_data) }
 
   describe '#initialize' do
