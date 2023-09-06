@@ -8,9 +8,18 @@ class App
   attr_accessor :books, :people, :rentals
 
   def initialize
-    @books = []
-    @persons = []
-    @rentals = []
+    @books = FileHandler.new(:book).load
+    @persons = FileHandler.new(:person).load
+    @rentals = FileHandler.new(:rental).load(@books, @persons)
+  end
+
+  def save
+    books = FileHandler.new(:book, @books)
+    persons = FileHandler.new(:person, @persons)
+    rentals = FileHandler.new(:rental, @rentals)
+    books.save unless @books.empty?
+    persons.save unless @persons.empty?
+    rentals.save unless @rentals.empty?
   end
 
   def list_all_books
