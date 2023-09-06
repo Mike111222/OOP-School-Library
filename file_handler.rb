@@ -4,13 +4,13 @@ require 'json'
 class FileHandler
   include FileTypes
 
-  def initialize(type, data=[])
+  def initialize(type, data = [])
     @path = 'data/'
     @filename = get_filename(type)
     @datatype = type
     @data = data
   end
-  
+
   def exists?
     File.exist?("#{@path}#{@filename}")
   end
@@ -36,6 +36,7 @@ class FileHandler
 
   def load(books = nil, persons = nil)
     return [] unless exists? || (exists? && empty?)
+
     file = File.read("#{@path}#{@filename}")
     lines = file.split("\n")
     lines.map do |line|
