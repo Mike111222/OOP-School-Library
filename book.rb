@@ -11,19 +11,19 @@ class Book
   end
 
   def add_rental(date, person)
-   Rental.new(date, person, self)
+    Rental.new(date, person, self)
   end
 
   def to_s
     "Title: #{title}, Author: #{author}"
   end
 
-  def to_json(*args)
+  def to_json(*_args)
     JSON.dump({
-      id: @id,
-      title: @title,
-      author: @author,
-    })
+                id: @id,
+                title: @title,
+                author: @author
+              })
   end
 
   def self.from_json(json_string)
